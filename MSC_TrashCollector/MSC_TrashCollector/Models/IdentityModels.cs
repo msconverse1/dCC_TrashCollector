@@ -25,13 +25,14 @@ namespace MSC_TrashCollector.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        DbSet<Customer> Customers { get; set; }
-        DbSet<SuspendedDay> SuspendedDays { get; set; }
-       
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
+      public  DbSet<Customer> Customers { get; set; }
+      public  DbSet<SuspendedDay> SuspendedDays { get; set; }
+      public  DbSet<Address> Addresses { get; set; }
+       public DbSet<ZipCode> ZipCodes { get; set; }
+      public static ApplicationDbContext Create()
+      {
+           return new ApplicationDbContext();
+      }
 
     }
 }

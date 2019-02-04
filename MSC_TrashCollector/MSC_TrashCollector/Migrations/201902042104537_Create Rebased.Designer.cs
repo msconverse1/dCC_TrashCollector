@@ -7,13 +7,13 @@ namespace MSC_TrashCollector.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class CreateUserRoles : IMigrationMetadata
+    public sealed partial class CreateRebased : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateUserRoles));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateRebased));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902041848159_Create UserRoles"; }
+            get { return "201902042104537_Create Rebased"; }
         }
         
         string IMigrationMetadata.Source

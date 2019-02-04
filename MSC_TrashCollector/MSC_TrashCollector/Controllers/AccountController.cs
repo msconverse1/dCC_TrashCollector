@@ -149,12 +149,26 @@ namespace MSC_TrashCollector.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            ApplicationDbContext db = new ApplicationDbContext();
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email,UserRole = model.UserRole };
+                
+                if (user.UserRole == "Customer")
+                {
+
+                   // db.Customers.Add(user);
+                }
+                if (user.UserRole == "Employee")
+                {
+
+                    // db.Customers.Add(user);
+                }
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
+                    
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

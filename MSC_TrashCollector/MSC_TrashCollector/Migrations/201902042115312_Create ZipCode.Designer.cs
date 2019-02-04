@@ -7,13 +7,13 @@ namespace MSC_TrashCollector.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class CreateSuspends : IMigrationMetadata
+    public sealed partial class CreateZipCode : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateSuspends));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateZipCode));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902041728280_Create Suspends"; }
+            get { return "201902042115312_Create ZipCode"; }
         }
         
         string IMigrationMetadata.Source
