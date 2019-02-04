@@ -187,6 +187,10 @@
     <Compile Include="Migrations\201902041749198_Create CustomerID.Designer.cs">
       <DependentUpon>201902041749198_Create CustomerID.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902041848159_Create UserRoles.cs" />
+    <Compile Include="Migrations\201902041848159_Create UserRoles.Designer.cs">
+      <DependentUpon>201902041848159_Create UserRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -280,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902041749198_Create CustomerID.resx">
       <DependentUpon>201902041749198_Create CustomerID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902041848159_Create UserRoles.resx">
+      <DependentUpon>201902041848159_Create UserRoles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

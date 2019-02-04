@@ -15,6 +15,8 @@ namespace MSC_TrashCollector.Models
         public string FirstName { get; set; }
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
+
         //[ForeignKey("SuspendedDay")] 
         //public int SuspendedID { get; set; }
        

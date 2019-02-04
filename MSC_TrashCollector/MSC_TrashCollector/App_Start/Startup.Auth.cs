@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using MSC_TrashCollector.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MSC_TrashCollector
 {
@@ -63,6 +64,23 @@ namespace MSC_TrashCollector
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+        }
+        private void createRoles()
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            if (!roleManager.RoleExists("Customer"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "Customer";
+                roleManager.Create(role);
+            }
+            if (!roleManager.RoleExists("Employee"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "Employee";
+                roleManager.Create(role);
+            }
         }
     }
 }
