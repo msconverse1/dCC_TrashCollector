@@ -15,9 +15,9 @@ namespace MSC_TrashCollector.Models
         public string StreetName { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        [ForeignKey("ZipCode")]
+        
         [Display(Name = "ZipCode")]
-        public int ZipCodeID { get; set; }
-        public ZipCode ZipCode { get; set; }
+        public int ZipCode { get; set; }
+        
     }
 }

@@ -154,16 +154,7 @@ namespace MSC_TrashCollector.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email,UserRole = model.UserRole };
                 
-                if (user.UserRole == "Customer")
-                {
 
-                   // db.Customers.Add(user);
-                }
-                if (user.UserRole == "Employee")
-                {
-
-                    // db.Customers.Add(user);
-                }
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -177,6 +168,16 @@ namespace MSC_TrashCollector.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRole);
+                    if (user.UserRole == "Customer")
+                    {
+                        return RedirectToAction("Create", "Customers");
+                        // db.Customers.Add(user);
+                    }
+                    if (user.UserRole == "Employee")
+                    {
+                        return RedirectToAction("Index", "Employee");
+                        // db.Customers.Add(user);
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
