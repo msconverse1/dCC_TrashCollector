@@ -180,17 +180,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902042104537_Create Rebased.cs" />
-    <Compile Include="Migrations\201902042104537_Create Rebased.Designer.cs">
-      <DependentUpon>201902042104537_Create Rebased.cs</DependentUpon>
+    <Compile Include="Migrations\201902061357110_Initial.cs" />
+    <Compile Include="Migrations\201902061357110_Initial.Designer.cs">
+      <DependentUpon>201902061357110_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902042115312_Create ZipCode.cs" />
-    <Compile Include="Migrations\201902042115312_Create ZipCode.Designer.cs">
-      <DependentUpon>201902042115312_Create ZipCode.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902051519303_Rebased.cs" />
-    <Compile Include="Migrations\201902051519303_Rebased.Designer.cs">
-      <DependentUpon>201902051519303_Rebased.cs</DependentUpon>
+    <Compile Include="Migrations\201902061410126_update.cs" />
+    <Compile Include="Migrations\201902061410126_update.Designer.cs">
+      <DependentUpon>201902061410126_update.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -269,6 +265,8 @@
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Customers\SuspendDays.cshtml" />
+    <Content Include="Views\Customers\PickupDays.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -287,14 +285,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902042104537_Create Rebased.resx">
-      <DependentUpon>201902042104537_Create Rebased.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902061357110_Initial.resx">
+      <DependentUpon>201902061357110_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902042115312_Create ZipCode.resx">
-      <DependentUpon>201902042115312_Create ZipCode.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902051519303_Rebased.resx">
-      <DependentUpon>201902051519303_Rebased.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902061410126_update.resx">
+      <DependentUpon>201902061410126_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

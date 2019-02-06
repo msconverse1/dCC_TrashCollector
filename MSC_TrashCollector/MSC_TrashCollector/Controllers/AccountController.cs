@@ -152,7 +152,7 @@ namespace MSC_TrashCollector.Controllers
             ApplicationDbContext db = new ApplicationDbContext();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,UserRole = model.UserRole };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,UserRole = model.UserRole};
                 
 
                 var result = await UserManager.CreateAsync(user, model.Password);

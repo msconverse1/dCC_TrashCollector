@@ -23,5 +23,10 @@ namespace MSC_TrashCollector.Models
         public int AddressID { get; set; }
         public Address Address { get; set; }
 
+        [ForeignKey("SuspendedDay")]
+        [Display(Name = "SuspendedDay")]
+        public int? SuspendedDayId { get; set; }
+        public SuspendedDay SuspendedDay { get; set; }
+        
     }
 }

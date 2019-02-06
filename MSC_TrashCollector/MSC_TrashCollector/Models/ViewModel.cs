@@ -9,5 +9,7 @@ namespace MSC_TrashCollector.Models
     {
         public Customer Customer { get; set; }
         public Address Address { get; set; }
+
+        public SuspendedDay SuspendedDay { get; set; }
     }
 }

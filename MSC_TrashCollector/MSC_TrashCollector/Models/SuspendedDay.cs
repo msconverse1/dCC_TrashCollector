@@ -11,11 +11,9 @@ namespace MSC_TrashCollector.Models
     {
         [Key]
         public int ID { get; set; }
+        public string PickUPDay { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
-        [ForeignKey("Customer")]
-        [Display(Name = "Customer")]
-        public int CustomerID { get; set; }
-        public Customer Customer { get; set; }
+       
     }
 }

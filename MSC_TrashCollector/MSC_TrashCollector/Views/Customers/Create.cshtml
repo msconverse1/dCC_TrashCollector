@@ -63,7 +63,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Address.ZipCode, "Address", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Address.ZipCode, "ZipCode", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Address.ZipCode, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Address.ZipCode, "", new { @class = "text-danger" })

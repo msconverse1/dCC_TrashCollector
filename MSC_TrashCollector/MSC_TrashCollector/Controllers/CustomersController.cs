@@ -14,7 +14,7 @@ namespace MSC_TrashCollector.Controllers
     public class CustomersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        
         // GET: Customers
         public ActionResult Index()
         {
@@ -36,15 +36,84 @@ namespace MSC_TrashCollector.Controllers
             }
             return View(customer);
         }
-
-        // GET: Customers/Create
         [HttpGet]
+        public ActionResult PickupDays(int? id)
+        {
+            if(id==null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewModel viewModel = new ViewModel()
+            {
+                Customer = new Customer(),
+                Address = new Address(),
+                SuspendedDay = new SuspendedDay(),
+               
+            };
+            viewModel.Customer = db.Customers.Find(id);
+            viewModel.Address = db.Addresses.Where(e => e.ID == viewModel.Customer.AddressID).SingleOrDefault();
+            if (viewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(viewModel);
+        }
+        [HttpPost]
+        public ActionResult PickupDays(ViewModel viewModel)
+        {
+
+                db.SuspendedDays.Add(viewModel.SuspendedDay);
+                db.Entry(viewModel.Customer).State = EntityState.Modified;
+                db.SaveChanges();
+            viewModel.Customer.SuspendedDayId = viewModel.SuspendedDay.ID;
+            db.SaveChanges();
+                return RedirectToAction("Index");
+            
+
+
+        }
+
+        [HttpGet]
+        public ActionResult SuspendDays(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewModel viewModel = new ViewModel()
+            {
+                Customer =new Customer(),
+                Address = new Address(),
+                SuspendedDay = new SuspendedDay()
+        };
+            viewModel.Customer = db.Customers.Find(id);
+            viewModel.Address  =db.Addresses.Where(e => e.ID == viewModel.Customer.AddressID).SingleOrDefault();
+            viewModel.SuspendedDay = db.SuspendedDays.Where(e => e.ID == viewModel.Customer.SuspendedDayId).SingleOrDefault();
+            if (viewModel == null)
+            {
+                return HttpNotFound();
+            }
+           
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult SuspendDays(ViewModel viewModel)
+        {
+            db.Entry(viewModel.SuspendedDay).State = EntityState.Modified;
+            db.SaveChanges();
+   
+            return View("Index");
+        }
+       // GET: Customers/Create
+       [HttpGet]
         public ActionResult Create()
         {
             ViewModel viewModel = new ViewModel()
             {
                 Customer = new Customer(),
-                Address = new Address()
+                Address = new Address(),
+                
             };
             
             return View(viewModel);
@@ -59,11 +128,11 @@ namespace MSC_TrashCollector.Controllers
         {
             if (ModelState.IsValid)            
             {
-                //User.Identity.GetUserId();
+                //viewModel.Customer.UserID= User.Identity.GetUserId();
                 db.Customers.Add(viewModel.Customer);
                 db.Addresses.Add(viewModel.Address);
                 
-                //db.Addresses.Add(customer.)
+                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -93,7 +162,7 @@ namespace MSC_TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,Email,AddressID")] Customer customer)
+        public ActionResult Edit(Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -112,6 +181,7 @@ namespace MSC_TrashCollector.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            Address address = db.Addresses.Find(id);
             Customer customer = db.Customers.Find(id);
             if (customer == null)
             {
@@ -125,6 +195,7 @@ namespace MSC_TrashCollector.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+
             Customer customer = db.Customers.Find(id);
             db.Customers.Remove(customer);
             db.SaveChanges();
@@ -139,5 +210,6 @@ namespace MSC_TrashCollector.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }

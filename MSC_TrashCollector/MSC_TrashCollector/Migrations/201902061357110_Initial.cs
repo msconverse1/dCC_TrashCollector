@@ -3,7 +3,7 @@ namespace MSC_TrashCollector.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreateRebased : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -28,10 +28,24 @@ namespace MSC_TrashCollector.Migrations
                         LastName = c.String(),
                         Email = c.String(),
                         AddressID = c.Int(nullable: false),
+                        SuspendedDayId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Addresses", t => t.AddressID, cascadeDelete: true)
-                .Index(t => t.AddressID);
+                .ForeignKey("dbo.SuspendedDays", t => t.SuspendedDayId, cascadeDelete: true)
+                .Index(t => t.AddressID)
+                .Index(t => t.SuspendedDayId);
+            
+            CreateTable(
+                "dbo.SuspendedDays",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        PickUPDay = c.String(),
+                        StartDate = c.String(),
+                        EndDate = c.String(),
+                    })
+                .PrimaryKey(t => t.ID);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -55,19 +69,6 @@ namespace MSC_TrashCollector.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
-            
-            CreateTable(
-                "dbo.SuspendedDays",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        StartDate = c.String(),
-                        EndDate = c.String(),
-                        CustomerID = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Customers", t => t.CustomerID, cascadeDelete: true)
-                .Index(t => t.CustomerID);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -122,23 +123,23 @@ namespace MSC_TrashCollector.Migrations
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.SuspendedDays", "CustomerID", "dbo.Customers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Customers", "SuspendedDayId", "dbo.SuspendedDays");
             DropForeignKey("dbo.Customers", "AddressID", "dbo.Addresses");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.SuspendedDays", new[] { "CustomerID" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Customers", new[] { "SuspendedDayId" });
             DropIndex("dbo.Customers", new[] { "AddressID" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.SuspendedDays");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.SuspendedDays");
             DropTable("dbo.Customers");
             DropTable("dbo.Addresses");
         }
