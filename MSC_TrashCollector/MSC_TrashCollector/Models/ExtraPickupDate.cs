@@ -7,15 +7,14 @@ using System.Web;
 
 namespace MSC_TrashCollector.Models
 {
-    public class SuspendedDay
+    public class ExtraPickupDate
     {
         [Key]
         public int ID { get; set; }
-        public string PickUPDay { get; set; }
-        public string StartDate { get; set; }
-        public string EndDate { get; set; }
+        public string ExtraDay { get; set; }
 
-        
-        
+        [ForeignKey("Customer")]
+        public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
     }
 }

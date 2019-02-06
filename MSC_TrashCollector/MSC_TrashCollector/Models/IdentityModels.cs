@@ -34,5 +34,6 @@ namespace MSC_TrashCollector.Models
            return new ApplicationDbContext();
       }
 
+        public System.Data.Entity.DbSet<MSC_TrashCollector.Models.ExtraPickupDate> ExtraPickupDates { get; set; }
     }
 }

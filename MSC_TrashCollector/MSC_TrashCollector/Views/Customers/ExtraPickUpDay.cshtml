@@ -1,0 +1,61 @@
+﻿@model MSC_TrashCollector.Models.ViewModel
+
+@{
+    ViewBag.Title = "ExtraPickUpDay";
+}
+
+<h2>ExtraPickUpDay</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>ExtraPickupDate</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.ExtraPickupDate.ExtraDay, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ExtraPickupDate.ExtraDay, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ExtraPickupDate.ExtraDay, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @Html.HiddenFor(model => model.Customer.ID)
+    @Html.HiddenFor(model => model.Customer.FirstName)
+    @Html.HiddenFor(model => model.Customer.LastName)
+    @Html.HiddenFor(model => model.Customer.Email)
+    @Html.HiddenFor(model => model.Customer.AddressID)
+    @Html.HiddenFor(model => model.Customer.Address)
+
+    @Html.HiddenFor(model => model.Address.ID)
+    @Html.HiddenFor(model => model.Address.StreetName)
+    @Html.HiddenFor(model => model.Address.City)
+    @Html.HiddenFor(model => model.Address.State)
+    @Html.HiddenFor(model => model.Address.ZipCode)
+
+
+    @Html.HiddenFor(model => model.SuspendedDay.PickUPDay)
+    @Html.HiddenFor(model => model.SuspendedDay.ID)
+    @Html.HiddenFor(model => model.SuspendedDay.StartDate)
+    @Html.HiddenFor(model => model.SuspendedDay.EndDate)
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

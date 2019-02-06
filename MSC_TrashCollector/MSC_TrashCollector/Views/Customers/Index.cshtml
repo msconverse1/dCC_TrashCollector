@@ -42,7 +42,8 @@
         </td>
         <td>
             @Html.ActionLink("SetPickupDay", "PickupDays", new { id = item.ID })|
-           
+            @Html.ActionLink("ExtraPickUpDay", "ExtraPickUpDay", new { id = item.ID })|
+
             @Html.ActionLink("Suspend", "SuspendDays", new { id = item.ID })|
             @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
             @Html.ActionLink("Details", "Details", new { id = item.ID }) |

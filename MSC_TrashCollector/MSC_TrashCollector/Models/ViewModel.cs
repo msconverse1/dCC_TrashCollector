@@ -11,5 +11,6 @@ namespace MSC_TrashCollector.Models
         public Address Address { get; set; }
 
         public SuspendedDay SuspendedDay { get; set; }
+        public ExtraPickupDate ExtraPickupDate { get; set; }
     }
 }

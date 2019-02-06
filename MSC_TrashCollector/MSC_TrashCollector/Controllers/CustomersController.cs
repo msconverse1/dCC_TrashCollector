@@ -37,6 +37,39 @@ namespace MSC_TrashCollector.Controllers
             return View(customer);
         }
         [HttpGet]
+        public ActionResult ExtraPickUpDay(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewModel viewModel = new ViewModel()
+            {
+                Customer = new Customer(),
+                Address = new Address(),
+                SuspendedDay = new SuspendedDay(),
+                ExtraPickupDate = new ExtraPickupDate(),
+            };
+            viewModel.Customer = db.Customers.Find(id);
+            viewModel.Address = db.Addresses.Where(e => e.ID == viewModel.Customer.AddressID).SingleOrDefault();
+            viewModel.SuspendedDay = db.SuspendedDays.Where(e => e.ID == viewModel.Customer.SuspendedDayId).SingleOrDefault();
+            if (viewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(viewModel);
+        }
+        [HttpPost]
+        public ActionResult ExtraPickUpDay(ViewModel viewModel)
+        {
+            viewModel.ExtraPickupDate.CustomerId = viewModel.Customer.ID;
+            db.ExtraPickupDates.Add(viewModel.ExtraPickupDate);
+            
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
         public ActionResult PickupDays(int? id)
         {
             if(id==null)
@@ -68,9 +101,6 @@ namespace MSC_TrashCollector.Controllers
             viewModel.Customer.SuspendedDayId = viewModel.SuspendedDay.ID;
             db.SaveChanges();
                 return RedirectToAction("Index");
-            
-
-
         }
 
         [HttpGet]
@@ -102,8 +132,8 @@ namespace MSC_TrashCollector.Controllers
         {
             db.Entry(viewModel.SuspendedDay).State = EntityState.Modified;
             db.SaveChanges();
-   
-            return View("Index");
+
+            return RedirectToAction("Index");
         }
        // GET: Customers/Create
        [HttpGet]
