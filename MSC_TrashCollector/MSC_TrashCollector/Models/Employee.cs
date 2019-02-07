@@ -23,6 +23,7 @@ namespace MSC_TrashCollector.Models
         public int AddressID { get; set; }
         public Address Address { get; set; }
 
+        public string ANUserID { get; set; }
         public IEnumerable<int> ZipCodeSelect { get; set; }
     }
 }

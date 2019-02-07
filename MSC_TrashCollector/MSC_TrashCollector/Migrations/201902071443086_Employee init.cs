@@ -3,7 +3,7 @@ namespace MSC_TrashCollector.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Employeeint : DbMigration
+    public partial class Employeeinit : DbMigration
     {
         public override void Up()
         {
@@ -29,6 +29,7 @@ namespace MSC_TrashCollector.Migrations
                         Email = c.String(),
                         AddressID = c.Int(nullable: false),
                         SuspendedDayId = c.Int(),
+                        ANUserID = c.String(),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Addresses", t => t.AddressID, cascadeDelete: true)
@@ -56,6 +57,7 @@ namespace MSC_TrashCollector.Migrations
                         LastName = c.String(),
                         Email = c.String(),
                         AddressID = c.Int(nullable: false),
+                        ANUserID = c.String(),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Addresses", t => t.AddressID, cascadeDelete: true)

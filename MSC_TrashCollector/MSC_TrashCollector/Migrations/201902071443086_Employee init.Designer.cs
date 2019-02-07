@@ -7,13 +7,13 @@ namespace MSC_TrashCollector.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Customeruserid : IMigrationMetadata
+    public sealed partial class Employeeinit : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Customeruserid));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Employeeinit));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902061921048_Customer userid"; }
+            get { return "201902071443086_Employee init"; }
         }
         
         string IMigrationMetadata.Source

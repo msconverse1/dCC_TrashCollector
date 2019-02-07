@@ -162,10 +162,17 @@ namespace MSC_TrashCollector.Controllers
             {
                 var userlogedin = User.Identity.GetUserId();
                 viewModel.Customer.ANUserID = userlogedin;
+
+                
+                var v = db.Addresses.Where(p => p.ZipCode == viewModel.Address.ZipCode).Single();
+                if(v!= viewModel.Address)
+                {
+                    db.Addresses.Add(viewModel.Address);
+                }
+               
                 db.Customers.Add(viewModel.Customer);
-                db.Addresses.Add(viewModel.Address);
-                
-                
+
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

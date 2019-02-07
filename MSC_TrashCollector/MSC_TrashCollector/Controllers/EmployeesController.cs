@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using MSC_TrashCollector.Models;
 
 namespace MSC_TrashCollector.Controllers
@@ -17,8 +18,14 @@ namespace MSC_TrashCollector.Controllers
         // GET: Employees
         public ActionResult Index()
         {
-            var employees = db.Employees.Include(e => e.Address);
-            return View(employees.ToList());
+            var userLoggedin = User.Identity.GetUserId();
+
+            var employees = db.Employees.Where(c => c.ANUserID == userLoggedin).Include(c => c.Address);
+            var test = employees.Single();
+            var customerdb = db.Customers.Where(c=>c.Address.ZipCode == test.Address.ZipCode).ToList();
+            
+           
+            return View(customerdb);
         }
 
         // GET: Employees/Details/5
@@ -62,8 +69,10 @@ namespace MSC_TrashCollector.Controllers
         {
             if (ModelState.IsValid)
             {
-                var zipcode = db.Addresses.Where(e=>e.ZipCode == viewModelEmployee.Address.ZipCode).Single();
+                var zipcode = db.Addresses.Where(e=>e.ZipCode == viewModelEmployee.Address.ZipCode).First();
                 viewModelEmployee.Employee.AddressID = zipcode.ID;
+                var userlogedin = User.Identity.GetUserId();
+                viewModelEmployee.Employee.ANUserID = userlogedin;
                 db.Employees.Add(viewModelEmployee.Employee);
                 db.SaveChanges();
                 return RedirectToAction("Index");

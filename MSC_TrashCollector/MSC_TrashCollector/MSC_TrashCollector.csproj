@@ -181,13 +181,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902061649157_Employee int.cs" />
-    <Compile Include="Migrations\201902061649157_Employee int.Designer.cs">
-      <DependentUpon>201902061649157_Employee int.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902061921048_Customer userid.cs" />
-    <Compile Include="Migrations\201902061921048_Customer userid.Designer.cs">
-      <DependentUpon>201902061921048_Customer userid.cs</DependentUpon>
+    <Compile Include="Migrations\201902071443086_Employee init.cs" />
+    <Compile Include="Migrations\201902071443086_Employee init.Designer.cs">
+      <DependentUpon>201902071443086_Employee init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -295,11 +291,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902061649157_Employee int.resx">
-      <DependentUpon>201902061649157_Employee int.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902061921048_Customer userid.resx">
-      <DependentUpon>201902061921048_Customer userid.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902071443086_Employee init.resx">
+      <DependentUpon>201902071443086_Employee init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
