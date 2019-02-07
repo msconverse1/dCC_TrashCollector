@@ -28,7 +28,7 @@ namespace MSC_TrashCollector.Models
       public  DbSet<Customer> Customers { get; set; }
       public  DbSet<SuspendedDay> SuspendedDays { get; set; }
       public  DbSet<Address> Addresses { get; set; }
-       
+       public DbSet<Employee> Employees { get; set; }
       public static ApplicationDbContext Create()
       {
            return new ApplicationDbContext();

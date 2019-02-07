@@ -7,7 +7,7 @@ using System.Web;
 
 namespace MSC_TrashCollector.Models
 {
-    public class Customer
+    public class Employee
     {
         [Key]
         public int ID { get; set; }
@@ -19,18 +19,10 @@ namespace MSC_TrashCollector.Models
         public string Email { get; set; }
 
         [ForeignKey("Address")]
-        [Display(Name = "Address")]
+        [Display(Name = "PickupAddress")]
         public int AddressID { get; set; }
         public Address Address { get; set; }
 
-        [ForeignKey("SuspendedDay")]
-        [Display(Name = "SuspendedDay")]
-        public int? SuspendedDayId { get; set; }
-        public SuspendedDay SuspendedDay { get; set; }
-        
-        
-        public string ANUserID { get; set;}
-       
-
+        public IEnumerable<int> ZipCodeSelect { get; set; }
     }
 }

@@ -175,7 +175,7 @@ namespace MSC_TrashCollector.Controllers
                     }
                     if (user.UserRole == "Employee")
                     {
-                        return RedirectToAction("Index", "Employee");
+                        return RedirectToAction("Create", "Employees");
                         // db.Customers.Add(user);
                     }
                     return RedirectToAction("Index", "Home");

@@ -18,7 +18,9 @@ namespace MSC_TrashCollector.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            var customers = db.Customers.Include(c => c.Address);
+            var userLoggedin = User.Identity.GetUserId();
+
+            var customers = db.Customers.Where(c => c.ANUserID == userLoggedin).Include(c => c.Address);
             return View(customers.ToList());
         }
 
@@ -158,7 +160,8 @@ namespace MSC_TrashCollector.Controllers
         {
             if (ModelState.IsValid)            
             {
-                //viewModel.Customer.UserID= User.Identity.GetUserId();
+                var userlogedin = User.Identity.GetUserId();
+                viewModel.Customer.ANUserID = userlogedin;
                 db.Customers.Add(viewModel.Customer);
                 db.Addresses.Add(viewModel.Address);
                 

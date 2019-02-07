@@ -175,32 +175,31 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902061357110_Initial.cs" />
-    <Compile Include="Migrations\201902061357110_Initial.Designer.cs">
-      <DependentUpon>201902061357110_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201902061649157_Employee int.cs" />
+    <Compile Include="Migrations\201902061649157_Employee int.Designer.cs">
+      <DependentUpon>201902061649157_Employee int.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902061410126_update.cs" />
-    <Compile Include="Migrations\201902061410126_update.Designer.cs">
-      <DependentUpon>201902061410126_update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902061529178_ExtraDay.cs" />
-    <Compile Include="Migrations\201902061529178_ExtraDay.Designer.cs">
-      <DependentUpon>201902061529178_ExtraDay.cs</DependentUpon>
+    <Compile Include="Migrations\201902061921048_Customer userid.cs" />
+    <Compile Include="Migrations\201902061921048_Customer userid.Designer.cs">
+      <DependentUpon>201902061921048_Customer userid.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\ExtraPickupDate.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SuspendedDay.cs" />
     <Compile Include="Models\ViewModel.cs" />
+    <Compile Include="Models\ViewModelEmployee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -273,6 +272,11 @@
     <Content Include="Views\Customers\SuspendDays.cshtml" />
     <Content Include="Views\Customers\PickupDays.cshtml" />
     <Content Include="Views\Customers\ExtraPickUpDay.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -291,14 +295,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902061357110_Initial.resx">
-      <DependentUpon>201902061357110_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902061649157_Employee int.resx">
+      <DependentUpon>201902061649157_Employee int.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902061410126_update.resx">
-      <DependentUpon>201902061410126_update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902061529178_ExtraDay.resx">
-      <DependentUpon>201902061529178_ExtraDay.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902061921048_Customer userid.resx">
+      <DependentUpon>201902061921048_Customer userid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
