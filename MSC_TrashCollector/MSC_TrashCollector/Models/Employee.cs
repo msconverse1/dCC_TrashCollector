@@ -24,6 +24,7 @@ namespace MSC_TrashCollector.Models
         public Address Address { get; set; }
 
         public string ANUserID { get; set; }
+        public string DayChosen { get; set; }
         public IEnumerable<int> ZipCodeSelect { get; set; }
     }
 }

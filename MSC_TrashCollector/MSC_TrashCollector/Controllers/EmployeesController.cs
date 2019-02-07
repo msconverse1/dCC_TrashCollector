@@ -14,17 +14,41 @@ namespace MSC_TrashCollector.Controllers
     public class EmployeesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        [HttpGet]
         // GET: Employees
         public ActionResult Index()
         {
+            
             var userLoggedin = User.Identity.GetUserId();
 
             var employees = db.Employees.Where(c => c.ANUserID == userLoggedin).Include(c => c.Address);
             var test = employees.Single();
             var customerdb = db.Customers.Where(c=>c.Address.ZipCode == test.Address.ZipCode).ToList();
-            
+
+            return View(customerdb);
+        }
+        [HttpPost]
+        public ActionResult Index(string DayofWeek)
+        {
+
+            var userLoggedin = User.Identity.GetUserId();
+            var employees = db.Employees.Where(c => c.ANUserID == userLoggedin).Include(c => c.Address);
+            var test = employees.Single();
+            var todaysday = DateTime.Now.DayOfWeek.ToString();
+            var customerdb = db.Customers.Where(c => c.Address.ZipCode == test.Address.ZipCode).ToList();
+            var pickupday = db.SuspendedDays.Where(c => c.PickUPDay == todaysday).ToList();
+            var extraday = db.ExtraPickupDates.Where(c => c.ExtraDay == todaysday).ToList();
            
+                var prumdays = db.ExtraPickupDates.Where(c => c.ExtraDay == DayofWeek).ToList();
+
+            var people = customerdb.Where(c=>c.SuspendedDay.PickUPDay == DayofWeek);
+            var returnpeople = new List<Customer>();
+            //  prumdays.Where(f => f.CustomerId == )
+            foreach (var item in prumdays)
+            {
+                returnpeople.Add(item.Customer);
+            }
+
             return View(customerdb);
         }
 

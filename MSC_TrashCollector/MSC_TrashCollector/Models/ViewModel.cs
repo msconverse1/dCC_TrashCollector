@@ -12,5 +12,7 @@ namespace MSC_TrashCollector.Models
 
         public SuspendedDay SuspendedDay { get; set; }
         public ExtraPickupDate ExtraPickupDate { get; set; }
+
+        public Employee Employee { get; set; }
     }
 }
