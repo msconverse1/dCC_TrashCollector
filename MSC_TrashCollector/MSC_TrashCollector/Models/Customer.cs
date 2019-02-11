@@ -33,5 +33,7 @@ namespace MSC_TrashCollector.Models
        
         public double PickupCost { get; set; }
 
+        public string key { get; set; }
+
     }
 }

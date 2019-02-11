@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Web.WebPages;
 using Microsoft.AspNet.Identity;
 using MSC_TrashCollector.Models;
+using Newtonsoft.Json;
 
 namespace MSC_TrashCollector.Controllers
 {
@@ -151,63 +152,15 @@ namespace MSC_TrashCollector.Controllers
             return View(viewModelEmployee.Employee);
         }
 
-        // GET: Employees/Edit/5
-        public ActionResult Edit(int? id)
+        [HttpGet]
+        public ActionResult MappAddress(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Employee employee = db.Employees.Find(id);
-            if (employee == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.AddressID = new SelectList(db.Addresses, "ID", "StreetName", employee.AddressID);
-            return View(employee);
-        }
+            Customer customer = db.Customers.Where(c => c.ID == id).FirstOrDefault();
+            customer.Address = db.Addresses.Where(c => c.ID == customer.AddressID).FirstOrDefault();
+            APIKeys aPIKeys = new APIKeys();
+            customer.key = aPIKeys.api;
 
-        // POST: Employees/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,Email,AddressID")] Employee employee)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(employee).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.AddressID = new SelectList(db.Addresses, "ID", "StreetName", employee.AddressID);
-            return View(employee);
-        }
-
-        // GET: Employees/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Employee employee = db.Employees.Find(id);
-            if (employee == null)
-            {
-                return HttpNotFound();
-            }
-            return View(employee);
-        }
-
-        // POST: Employees/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Employee employee = db.Employees.Find(id);
-            db.Employees.Remove(employee);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            return View("MappAddress", customer);
         }
 
         protected override void Dispose(bool disposing)

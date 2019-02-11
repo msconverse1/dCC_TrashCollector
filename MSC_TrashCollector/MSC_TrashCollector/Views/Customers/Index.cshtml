@@ -23,7 +23,15 @@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrashPickup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PickupCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SuspendedDay.PickUPDay)
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -40,6 +48,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.Email)
         </td>
+        <th>
+            @Html.DisplayFor(model => item.TrashPickup)
+        </th>
+        <th>
+            @Html.DisplayFor(model => item.PickupCost)
+        </th>
+        <th>
+            @Html.DisplayFor(model => item.SuspendedDay.PickUPDay)
+        </th>
         <td>
             @Html.ActionLink("SetPickupDay", "PickupDays", new { id = item.ID })|
             @Html.ActionLink("ExtraPickUpDay", "ExtraPickUpDay", new { id = item.ID })|

@@ -3,8 +3,7 @@
 @{
     ViewBag.Title = "List Of Customers In your area";
 }
-<br></br>
-<br></br>
+
 <h2>List Of Customers In your area</h2>
 
 @using (Html.BeginForm("Index", "Employees"))
@@ -41,19 +40,17 @@
         </td>
         <td>
             $
-            @Html.DisplayFor( model => item.PickupCost)
+            @Html.DisplayFor(model => item.PickupCost)
         </td>
         <td>
-
             @Html.CheckBoxFor(modelItem => item.TrashPickup)
             @{ var status = item.TrashPickup ? "Complete" : "Not Complete";
-
             }
-
             @Html.ActionLink(status, "PickupStatus", new { id = item.ID }, new { @class = "btn btn-default" })
-
         </td>
-
+        <td>
+            @Html.ActionLink("PickupLocation", "MappAddress", new { id = item.ID }, new { @class = "btn btn-default" })
+        </td>
     </tr>
 
     }

@@ -1,0 +1,49 @@
+﻿@model MSC_TrashCollector.Models.Customer
+
+<title>Show or Integrate Google Maps in asp.net webapplication</title>
+<div class="col-md-5">
+    <td>
+        Name: 
+        @Html.DisplayFor(model => model.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(model => model.LastName)
+    </td>
+    <td>
+        Email:
+        @Html.DisplayFor(model => model.Email)
+    </td>
+    <td>
+        Pickup Cost: $
+        @Html.DisplayFor(model => model.PickupCost)
+    </td>
+    <td>
+        StreetName: 
+        @Html.DisplayFor(model => model.Address.StreetName)
+    </td>
+    <td>
+        City: 
+        @Html.DisplayFor(model => model.Address.City)
+    </td>
+    <td>
+        State: 
+        @Html.DisplayFor(model => model.Address.State)
+    </td>
+    <td>
+        ZipCode: 
+        @Html.DisplayFor(model => model.Address.ZipCode)
+    </td>
+
+</div>
+@{var key = Model.key;}
+    <div class="col-md-6">
+        <iframe width="600"
+                height="450"
+                frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?key=@Model.key
+   &q=@Model.Address.StreetName+@Model.Address.City+@Model.Address.State+@Model.Address.ZipCode" allowfullscreen></iframe>
+    </div>
+
+    <div class="col-md-8">
+        @Html.ActionLink("Back to List", "Index")
+    </div>

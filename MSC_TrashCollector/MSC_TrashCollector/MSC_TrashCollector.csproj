@@ -197,9 +197,18 @@
     <Compile Include="Migrations\201902110255062_Create logic for pickup cost.Designer.cs">
       <DependentUpon>201902110255062_Create logic for pickup cost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902111649442_Api Key.cs" />
+    <Compile Include="Migrations\201902111649442_Api Key.Designer.cs">
+      <DependentUpon>201902111649442_Api Key.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902111657557_Api Key1.cs" />
+    <Compile Include="Migrations\201902111657557_Api Key1.Designer.cs">
+      <DependentUpon>201902111657557_Api Key1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\APIKeys.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\ExtraPickupDate.cs" />
@@ -285,6 +294,7 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\Employees\MappAddress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -314,6 +324,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902110255062_Create logic for pickup cost.resx">
       <DependentUpon>201902110255062_Create logic for pickup cost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902111649442_Api Key.resx">
+      <DependentUpon>201902111649442_Api Key.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902111657557_Api Key1.resx">
+      <DependentUpon>201902111657557_Api Key1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
