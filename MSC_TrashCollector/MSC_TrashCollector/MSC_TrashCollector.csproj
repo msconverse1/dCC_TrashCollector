@@ -193,6 +193,10 @@
     <Compile Include="Migrations\201902081414319_Checkbox.Designer.cs">
       <DependentUpon>201902081414319_Checkbox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902110255062_Create logic for pickup cost.cs" />
+    <Compile Include="Migrations\201902110255062_Create logic for pickup cost.Designer.cs">
+      <DependentUpon>201902110255062_Create logic for pickup cost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -307,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902081414319_Checkbox.resx">
       <DependentUpon>201902081414319_Checkbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902110255062_Create logic for pickup cost.resx">
+      <DependentUpon>201902110255062_Create logic for pickup cost.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

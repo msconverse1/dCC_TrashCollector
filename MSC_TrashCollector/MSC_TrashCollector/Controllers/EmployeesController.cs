@@ -80,7 +80,17 @@ namespace MSC_TrashCollector.Controllers
         public ActionResult PickupStatus(int? id)
         {
             Customer customer = db.Customers.Where(c => c.ID == id).FirstOrDefault();
-            customer.TrashPickup = true;
+            if (customer.TrashPickup)
+            {
+                customer.TrashPickup = false;
+                customer.PickupCost = 0;
+            }
+            else
+            {
+                customer.TrashPickup = true;
+                customer.PickupCost += 3.5 * 2;
+
+            }
             db.SaveChanges();
 
             return RedirectToAction("Index");

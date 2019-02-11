@@ -23,29 +23,39 @@
         <th>
             @Html.DisplayNameFor(model => model.TrashPickup)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PickupCost)
+        </th>
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.CheckBoxFor(modelItem => item.TrashPickup)
-                @{ var status = item.TrashPickup ? "Complete" : "Not Complete";
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            $
+            @Html.DisplayFor( model => item.PickupCost)
+        </td>
+        <td>
 
-                }
+            @Html.CheckBoxFor(modelItem => item.TrashPickup)
+            @{ var status = item.TrashPickup ? "Complete" : "Not Complete";
 
-                @Html.ActionLink(status, "PickupStatus", new { id = item.ID }, new { @class = "btn btn-default" })
+            }
 
-            </td>
-        </tr>
+            @Html.ActionLink(status, "PickupStatus", new { id = item.ID }, new { @class = "btn btn-default" })
+
+        </td>
+
+    </tr>
+
     }
 </table>
         

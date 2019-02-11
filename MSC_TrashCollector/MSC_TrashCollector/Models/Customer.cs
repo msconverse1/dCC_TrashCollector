@@ -31,6 +31,7 @@ namespace MSC_TrashCollector.Models
         public bool TrashPickup { get; set; }
         public string ANUserID { get; set;}
        
+        public double PickupCost { get; set; }
 
     }
 }
