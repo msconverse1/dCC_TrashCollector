@@ -62,7 +62,7 @@ namespace MSC_TrashCollector.Controllers
             {
                 if (item.SuspendedDay.StartDate.AsDateTime().Date.Day >= DateTime.Now.Date.Day && item.SuspendedDay.EndDate.AsDateTime().Date.Day <= DateTime.Now.Date.Day)
                 {
-
+                    continue;
                 }
                 else
                     returnpeople.Add(item);
