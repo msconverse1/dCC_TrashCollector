@@ -28,7 +28,7 @@ namespace MSC_TrashCollector.Models
         public int? SuspendedDayId { get; set; }
         public SuspendedDay SuspendedDay { get; set; }
         
-        
+        public bool TrashPickup { get; set; }
         public string ANUserID { get; set;}
        
 

@@ -189,6 +189,10 @@
     <Compile Include="Migrations\201902071814471_Employee day Choice.Designer.cs">
       <DependentUpon>201902071814471_Employee day Choice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902081414319_Checkbox.cs" />
+    <Compile Include="Migrations\201902081414319_Checkbox.Designer.cs">
+      <DependentUpon>201902081414319_Checkbox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -300,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902071814471_Employee day Choice.resx">
       <DependentUpon>201902071814471_Employee day Choice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902081414319_Checkbox.resx">
+      <DependentUpon>201902081414319_Checkbox.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
